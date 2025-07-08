@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coconut & Cashew Feni</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head> 
+<body class="bg-dark text-light">
+
+<!-- Navbar with Logo and Buttons -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-0 pb-0">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/images/peace.jpeg" alt="logo" width="40" height="40" class="d-inline-block align-text-top rounded">
+            Coconut & Cashew Feni
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav" id="navbar-items">
+                <% if (user) { %>
+                    <li class="nav-item m-2" id="user-item">
+                        <span class="navbar-text me-2" id="user-name"> <strong> Welcome, <%= user.name %></strong></span>
+                        <a class="btn btn-outline-light" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <form action="api/users/logout" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-outline-danger">Logout</button>
+                        </form>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item" id="login-item">
+                        <a class="btn btn-outline-light me-2" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item" id="signup-item">
+                        <a class="btn btn-primary" href="/signup">Signup</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr>
+
+<!-- "Get Your Feni" Button (Fixed) -->
+<a href="/details" class="btn btn-warning position-fixed top-3 end-0 mt-5 me-5 z-3 px-4 py-3 fs-4 shadow-lg">Get Your Feni</a>
+
+<!-- Header with Logo -->
+<div class="container text-center my-4">
+    <img src="/images/peace.jpeg" alt="logo" class="img-fluid rounded">
+</div>
+
+<!-- Feni Info Section -->
+<div class="container bg-light text-dark p-4 rounded shadow-sm my-4">
+    <h1 class="display-4 text-center">COCONUT & CASHEW FENI</h1>
+    <ul class="list-unstyled text-center fs-5">
+        <li>Hyper Local</li>
+        <li>Small Batch</li>
+        <li>Single Ingredient</li>
+        <li>Copper Still Distilled</li>
+    </ul>
+</div>
+
+<!-- Product Display Section -->
+<div class="container">
+    <div class="row">
+        <!-- Coconut Feni -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/bottle.jpeg" class="card-img-top" alt="Goenchi Coconut Feni">
+                <div class="card-body">
+                    <h5 class="card-title">Coconut Feni</h5>
+                    <p class="card-text">Double distilled from the nectar of coconut flowers after slow, natural fermentation.</p>
+                    <a href="/more-info/coconut-feni" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cashew Feni -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/bottle2.jpeg" class="card-img-top" alt="Goenchi Cashew Feni">
+                <div class="card-body">
+                    <h5 class="card-title">Cashew Feni</h5>
+                    <p class="card-text">Double distilled from the juice of Goan Cashew apples after slow natural fermentation.</p>
+                    <a href="/more-info/cashew-feni" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Spirit of Goa -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm text-center">
+                <img src="/images/bottle3.jpeg" class="card-img-top" alt="The Spirit of Goa">
+                <div class="card-body">
+                    <h5 class="card-title">The Spirit of Goa</h5>
+                    <p class="card-text">Our strength comes from the land & our ancestors, telling the story of Goa through our fine Feni.</p>
+                    <a href="/more-info/spirit-of-goa" class="btn btn-primary">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ancestor Section -->
+<div class="container text-center my-4">
+    <img src="/images/make.jpeg" alt="Eternal Spirit of Our Ancestors" class="img-fluid rounded shadow-sm">
+    <div class="my-4">
+        <h1 class="display-5">Eternal Spirit of Our Ancestors</h1>
+        <p class="lead">When times were dark, Feni's guardians gathered, prayed, and our ancestors emerged.</p>
+    </div>
+}
+}category
+}
+}category
+</div>
+
+<!-- One District One Product Section -->
+<div class="container bg-light text-dark p-4 rounded shadow-sm my-4">
+    <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+            <img src="/images/bharat.jpeg" alt="One District, One Product Logo" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <h2>One District, One Product</h2>
+            <p>PEACE is a proud Made In India brand that embodies a 500+ year tradition of Feni Distillation.</p>
+            <p>We are immensely honored to partner with DPIIT and the Ministry of Commerce & Industry to bring the spotlight back on our indigenous spirits.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Cocktail Menu Section -->
+<div class="container">
+    <h1 class="text-center mb-4">Cocktail Menu</h1>
+    <div class="row">
+        <!-- Cocktail Cards -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/zuria.jpeg" class="card-img-top" alt="The Zuari cocktail">
+                <div class="card-body">
+                    <h5 class="card-title">The Zuari</h5>
+                    <p class="card-text">60 ml Goenchi Coconut Feni<br>Top with Indian Tonic Water</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/Mandovi.jpeg" class="card-img-top" alt="The Mandovi cocktail">
+                <div class="card-body">
+                    <h5 class="card-title">The Mandovi</h5>
+                    <p class="card-text">60 ml Goenchi Cashew Feni<br>Top with Lemon-Lime Soda</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/bicha.jpeg" class="card-img-top" alt="Beach Bum cocktail">
+                <div class="card-body">
+                    <h5 class="card-title">Beach Bum</h5>
+                    <p class="card-text">60 ml Goenchi Cashew Feni<br>25 ml Kokum Syrup</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More Cocktail Cards -->
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/feni coloda.jpeg" class="card-img-top" alt="Feni Colada">
+                <div class="card-body">
+                    <h5 class="card-title">Feni Colada</h5>
+                    <p class="card-text">120 ml Goenchi Coconut Feni<br>90 ml Pineapple Juice<br>60 ml Coconut Milk</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/haute.jpeg" class="card-img-top" alt="Goan Ghost">
+                <div class="card-body">
+                    <h5 class="card-title">Goan Ghost</h5>
+                    <p class="card-text">90 ml Goenchi Coconut Feni<br>90 ml Coconut Water<br>Top with Soda</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-light shadow-sm">
+                <img src="/images/MARIA.jpeg" class="card-img-top" alt="Jackfruit Spirit">
+                <div class="card-body">
+                    <h5 class="card-title">Jackfruit Spirit</h5>
+                    <p class="card-text">60 ml Goenchi Cashew Feni<br>60 ml Jackfruit Puree<br>Top with Tonic</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-light text-center py-3">
+    <div class="container">
+        <p>&copy; 2024 Coconut & Cashew Feni. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Footer Section -->
+<footer class="bg-dark text-light text-center py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>Coconut & Cashew Feni is proudly crafted in small batches, rooted in Goa's rich distillation heritage. Made with love, passion, and tradition.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>Email: support@fenistore.com</p>
+                <p>Phone: +91-1234567890</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i> Facebook</a>
+                <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i> Instagram</a>
+                <a href="#" class="text-light"><i class="bi bi-twitter"></i> Twitter</a>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <p class="mb-0">&copy; 2024 Coconut & Cashew Feni. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS & Icons (for social media icons) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+
+</body>
+</html>

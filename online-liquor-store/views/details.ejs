@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feni Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+
+<!-- Navbar with Logo and Buttons -->
+<!-- Navbar with Logo and Buttons -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-0 pb-0">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="images/peace.jpeg" alt="logo" width="40" height="40" class="d-inline-block align-text-top rounded">
+            Coconut & Cashew Feni
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav" id="navbar-items">
+                <% if (user) { %>
+                    <li class="nav-item m-2">
+                        <span class="navbar-text me-2"><strong> Welcome, <%= user.name %></strong></span>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="btn btn-outline-light" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <form action="/logout" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-outline-danger">Logout</button>
+                        </form>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light me-2" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="/signup">Signup</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Back Button -->
+<div class="container my-3">
+    <button class="btn btn-secondary" onclick="history.back()">Back</button>
+</div>
+
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Discover Feni</h1>
+    
+    <!-- Feni Overview Section -->
+    <div class="bg-light text-dark p-4 rounded shadow-sm">
+        <h2 class="text-center">What is Feni?</h2>
+        <p class="lead text-center">
+            Feni is a traditional Goan spirit made from the fermentation of coconut sap or cashew apples. This unique drink reflects the essence of Goa, offering a rich and vibrant flavor that encapsulates the spirit of the region.
+        </p>
+    </div>
+
+    <!-- Feni Production Process Section -->
+    <div class="my-4">
+        <h2 class="text-center">Production Process</h2>
+        <ul class="list-group">
+            <li class="list-group-item bg-dark text-light">1. <strong>Harvesting</strong>: Fresh coconut sap or cashew apples are harvested.</li>
+            <li class="list-group-item bg-dark text-light">2. <strong>Fermentation</strong>: The sap or juice undergoes natural fermentation for several days.</li>
+            <li class="list-group-item bg-dark text-light">3. <strong>Distillation</strong>: The fermented liquid is distilled in copper stills, enhancing the flavor.</li>
+            <li class="list-group-item bg-dark text-light">4. <strong>Bottling</strong>: Finally, the distilled Feni is bottled for you to enjoy!</li>
+        </ul>
+    </div>
+
+    <!-- How to Enjoy Section -->
+    <div class="bg-light text-dark p-4 rounded shadow-sm my-4">
+        <h2 class="text-center">How to Enjoy Feni</h2>
+        <p class="text-center">
+            Feni can be enjoyed in various ways:
+        </p>
+        <ul class="list-unstyled text-center">
+            <li><strong>Neat</strong>: Enjoy the authentic flavor by sipping it straight.</li>
+            <li><strong>With Mixers</strong>: Try it with tonic water, soda, or juices.</li>
+            <li><strong>In Cocktails</strong>: Experiment with our cocktail recipes to create delicious drinks!</li>
+        </ul>
+    </div>
+
+    <!-- Video Section -->
+<div class="text-center my-4">
+    <video controls autoplay muted class="img-fluid rounded shadow-sm" width="640" height="360">
+        <source src="images/feni-making.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+    <!-- Call to Action -->
+    <div class="text-center my-4">
+        <a href="/buyNow" class="btn btn-success btn-lg">Buy Now</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

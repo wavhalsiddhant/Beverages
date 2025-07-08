@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Buy Feni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script>
+        // Calculate total price for order items
+        function calculateTotal() {
+            const quantity = document.getElementById("quantity").value;
+            const pricePerUnit = <%= product.price %>; // Dynamically fetched product price
+            
+            const total = pricePerUnit * quantity;
+            document.getElementById("total").innerText = "Total Amount: ₹" + total;
+        }
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const productType = "<%= productType %>";
+            
+            <% if (user) { %>
+                const userId = <%= user.id %>;
+            <% } else { %>
+                alert('User is not logged in.');
+                return;
+            <% } %>
+
+            const items = [{ 
+                product_id: <%= product.id %>, // Use dynamically fetched product ID
+                quantity: quantity,
+                price: <%= product.price %> // Use dynamically fetched product price
+            }];
+
+            const total_amount = items.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+            const orderData = {
+                user_id: userId,
+                items: items,
+                total_amount: total_amount 
+            };
+
+            try {
+                const response = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData),
+                });
+
+                if (!response.ok) throw new Error('Order placement failed.');
+
+                const result = await response.json();
+                alert(result.message);
+                window.location.href = '/'; 
+            } catch (error) {
+                alert('Error placing order: ' + error.message);
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-light">
+
+<!-- Navbar with Logo and Buttons -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-0 pb-0">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/images/peace.jpeg" alt="logo" width="40" height="40" class="d-inline-block align-text-top rounded">
+            Coconut & Cashew Feni
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <% if (user) { %>
+                    <li class="nav-item m-2">
+                        <span class="nav-link text-light"><strong> Welcome, <%= user.name %></strong></span>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="btn btn-outline-light me-2" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <form action="/logout" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-outline-danger">Logout</button>
+                        </form>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/signup">Sign Up</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Back Button -->
+<div class="container my-3">
+    <button class="btn btn-secondary" onclick="history.back()">Back</button>
+</div>
+
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Checkout</h1>
+
+    <div class="card bg-light text-dark shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title text-center" id="feniType"><%= product.name %></h5> <!-- Display product name -->
+            <p id="unitPrice" class="text-center mb-3">Price per unit: ₹<%= product.price %></p> <!-- Price per unit display -->
+            <form id="orderForm" onsubmit="handleSubmit(event)">
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Enter Quantity:</label>
+                    <input type="number" id="quantity" class="form-control" min="1" required oninput="calculateTotal()">
+                </div>
+                <div id="total" class="lead text-center mb-4">Total Amount: ₹0</div>
+                <button type="submit" class="btn btn-success">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center my-4">
+        <a href="/details" class="btn btn-warning">Back to Details</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    window.onload = function() {
+        calculateTotal();
+    };
+</script>
+</body>
+</html>

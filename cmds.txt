@@ -1,0 +1,23 @@
+psql -U postgres
+
+\c fenishop
+
+select * from users;
+select * from products;
+select * from order;
+select * from order_items;
+
+//
+
+node server.js
+
+
+
+Databse
+models, views
+routing
+node js
+file structure
+ejs
+models, controllers: (functions)
+
